@@ -10,21 +10,23 @@ public class Tile {
         8, Den
         */
         boolean hasCrocodile;
-        int numTigers;
+        boolean hasTiger;
+        boolean hasOppTiger;
         int tigerSection; //-1 if no tiger
         int middleFeature;
         int rotation;
-	public Edge l, r, t, b;
+	public Edge l, r, t, b, m;
         
-	public Tile(int r, int t, int l, int b, int m){
+	public Tile(int r, int t, int l, int b, int m, int mf){
 		this.l=new Edge(l);
 		this.r=new Edge(r);
 		this.t=new Edge(t);
 		this.b=new Edge(b);
+		this.m=new Edge(m);
                 rotation = 0;
-                middleFeature = m;
+                middleFeature = mf;
                 hasCrocodile = false;
-                numTigers = 0;
+                hasTiger = false;
                 tigerSection = -1;
                 
 	}
@@ -50,7 +52,7 @@ public class Tile {
         }
         
         public void placeTiger(int section) {
-            numTigers++;
+            hasTiger = true;
             tigerSection = section;
         }
         
